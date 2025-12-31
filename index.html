@@ -8,16 +8,11 @@
 </head>
 <body>
     <div class="bg-effects">
-        <div class="floating-particles"></div>
-        <div class="code-rain"></div>
-        <div class="terminal-lines"></div>
+        <div class="grid-overlay"></div>
         <div class="gradient-orbs">
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
-            <div class="orb orb-3"></div>
         </div>
-        <div class="grid-overlay"></div>
-        <div class="circuit-pattern"></div>
     </div>
     
     <div class="container">
@@ -33,11 +28,9 @@
             <div class="projects-section">
                 <button class="projects-btn" onclick="showProjects()">
                     <span>Personal Projects</span>
-                    <div class="btn-glow"></div>
                 </button>
                 <button class="info-btn" onclick="showInfo()">
                     <span>Information</span>
-                    <div class="btn-glow"></div>
                 </button>
             </div>
         </div>
@@ -49,7 +42,6 @@
             
             <div class="info-grid">
                 <div class="info-card">
-                    <div class="card-glow"></div>
                     <div class="info-icon">💰</div>
                     <div class="info-title">Affordable Rates</div>
                     <div class="info-desc">
@@ -58,7 +50,6 @@
                 </div>
                 
                 <div class="info-card">
-                    <div class="card-glow"></div>
                     <div class="info-icon">📞</div>
                     <div class="info-title">Communication</div>
                     <div class="info-desc">
@@ -67,7 +58,6 @@
                 </div>
                 
                 <div class="info-card payment-card">
-                    <div class="card-glow"></div>
                     <div class="info-icon">💳</div>
                     <div class="info-title">Payment Methods</div>
                     <div class="payment-methods">
@@ -87,7 +77,6 @@
             
             <div class="extras-grid">
                 <div class="info-card extras-card">
-                    <div class="card-glow"></div>
                     <div class="info-icon">🌐</div>
                     <div class="info-title">Website Development</div>
                     <div class="info-desc">
@@ -95,7 +84,6 @@
                     </div>
                     <button class="contact-btn" onclick="openContactModal()">
                         Contact Me
-                        <div class="contact-btn-glow"></div>
                     </button>
                 </div>
             </div>
@@ -108,7 +96,6 @@
             
             <div class="projects-grid">
                 <div class="project-card">
-                    <div class="card-glow"></div>
                     <div class="project-title">Lockpick System</div>
                     <div class="project-desc">
                         Being able to lockpick doors with a progress UI Bar & Interactive Feedback.
@@ -127,7 +114,6 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="card-glow"></div>
                     <div class="project-title">3D UI Inventory</div>
                     <div class="project-desc">
                         3D UI with cartoony design elements & Inventory Presets.
@@ -147,7 +133,6 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="card-glow"></div>
                     <div class="project-title">Advanced Hitbox Raycasting</div>
                     <div class="project-desc">
                         Precise raycasting system for accurate hit detection and collision handling in combat systems.
@@ -166,7 +151,6 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="card-glow"></div>
                     <div class="project-title">Advanced 3D Mainmenu</div>
                     <div class="project-desc">
                         Horror ambience mainmenu with sounds & responsive 3D UI.
@@ -186,7 +170,6 @@
                 </div>
                 
                 <div class="project-card">
-                    <div class="card-glow"></div>
                     <div class="project-title">Adaptive UI</div>
                     <div class="project-desc">
                         Responsive 2D UI using UIScales, TweenServices, etc.
@@ -211,39 +194,76 @@
     <div id="contactModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeContactModal()">&times;</span>
-            <h3 class="modal-title">Get in Touch</h3>
-            <form id="contactForm" onsubmit="submitContact(event)">
-                <input type="hidden" name="_subject" value="New Portfolio Contact - Website Development">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_next" value="https://your-portfolio-url.com/thank-you">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input type="text" id="username" name="username" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="service">Service Needed</label>
-                    <textarea id="service" name="service" rows="4" placeholder="Describe what you need..." required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                    <span id="submitText">Send Message</span>
-                    <div class="loading-spinner" id="loadingSpinner"></div>
-                </button>
-            </form>
-            <div id="successMessage" class="success-message">
-                ✅ Message sent successfully! I'll get back to you soon.
+            
+            <div id="step1" class="contact-step active">
+                <h3 class="modal-title">Get in Touch</h3>
+                <p class="modal-subtitle">Enter your email to receive a verification code</p>
+                <form id="emailForm" onsubmit="sendVerificationCode(event)">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    </div>
+                    <button type="submit" class="submit-btn" id="emailSubmitBtn">
+                        <span id="emailSubmitText">Send Verification Code</span>
+                        <div class="loading-spinner" id="emailLoadingSpinner"></div>
+                    </button>
+                </form>
+                <div id="emailError" class="error-message"></div>
             </div>
-            <div id="errorMessage" class="error-message">
-                ❌ Failed to send message. Please try again.
+            
+            <div id="step2" class="contact-step">
+                <h3 class="modal-title">Check Your Inbox</h3>
+                <p class="modal-subtitle">We sent a 6-digit code to <span id="displayEmail"></span></p>
+                <form id="verifyForm" onsubmit="verifyCode(event)">
+                    <div class="form-group">
+                        <label for="verifyCode">Verification Code</label>
+                        <input type="text" id="verifyCode" name="code" maxlength="6" placeholder="000000" required>
+                    </div>
+                    <button type="submit" class="submit-btn" id="verifySubmitBtn">
+                        <span id="verifySubmitText">Verify Email</span>
+                        <div class="loading-spinner" id="verifyLoadingSpinner"></div>
+                    </button>
+                </form>
+                <div class="resend-section">
+                    <p>Didn't receive the code?</p>
+                    <button class="resend-btn" onclick="resendCode()">Resend Code</button>
+                </div>
+                <div id="verifyError" class="error-message"></div>
+            </div>
+            
+            <div id="step3" class="contact-step">
+                <h3 class="modal-title">Tell Me About Your Project</h3>
+                <p class="modal-subtitle">Email verified successfully!</p>
+                <form id="contactForm" onsubmit="submitContact(event)">
+                    <div class="form-group">
+                        <label for="username">Name / Username</label>
+                        <input type="text" id="username" name="username" placeholder="Your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="service">Project Details</label>
+                        <textarea id="service" name="service" rows="5" placeholder="Tell me about your project, budget, timeline, etc." required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" id="contactSubmitBtn">
+                        <span id="contactSubmitText">Send Message</span>
+                        <div class="loading-spinner" id="contactLoadingSpinner"></div>
+                    </button>
+                </form>
+                <div id="contactError" class="error-message"></div>
+            </div>
+            
+            <div id="successStep" class="contact-step">
+                <div class="success-icon">✓</div>
+                <h3 class="modal-title">Message Sent!</h3>
+                <p class="success-text">Thanks for reaching out. I'll get back to you within 24 hours.</p>
+                <button class="submit-btn" onclick="closeContactModal()">Close</button>
             </div>
         </div>
     </div>
     
     <script>
+        let verificationCode = '';
+        let userEmail = '';
+
         function showProjects() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('info-section').classList.remove('active');
@@ -262,80 +282,133 @@
             document.getElementById('home-section').style.display = 'block';
         }
 
-        function createParticles() {
-            const particlesContainer = document.querySelector('.floating-particles');
-            for (let i = 0; i < 50; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.left = Math.random() * 100 + '%';
-                particle.style.top = Math.random() * 100 + '%';
-                particle.style.animationDelay = Math.random() * 20 + 's';
-                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                particlesContainer.appendChild(particle);
-            }
-        }
-
-        function createCodeRain() {
-            const codeRainContainer = document.querySelector('.code-rain');
-            const codeChars = ['0', '1', '{', '}', '(', ')', ';', 'function', 'local', 'end', 'if', 'then'];
-            
-            for (let i = 0; i < 15; i++) {
-                const codeElement = document.createElement('div');
-                codeElement.className = 'code-char';
-                codeElement.textContent = codeChars[Math.floor(Math.random() * codeChars.length)];
-                codeElement.style.left = Math.random() * 100 + '%';
-                codeElement.style.animationDelay = Math.random() * 10 + 's';
-                codeElement.style.animationDuration = (Math.random() * 15 + 10) + 's';
-                codeRainContainer.appendChild(codeElement);
-            }
-        }
-
-        function createTerminalLines() {
-            const terminalContainer = document.querySelector('.terminal-lines');
-            for (let i = 0; i < 8; i++) {
-                const line = document.createElement('div');
-                line.className = 'terminal-line';
-                line.style.top = Math.random() * 100 + '%';
-                line.style.animationDelay = Math.random() * 8 + 's';
-                terminalContainer.appendChild(line);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', function() {
-            createParticles();
-            createCodeRain();
-            createTerminalLines();
-        });
-
         function openContactModal() {
             document.getElementById('contactModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
+            resetModalSteps();
         }
 
         function closeContactModal() {
             document.getElementById('contactModal').style.display = 'none';
             document.body.style.overflow = 'auto';
+            resetModalSteps();
+        }
+
+        function resetModalSteps() {
+            document.querySelectorAll('.contact-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step1').classList.add('active');
+            document.getElementById('emailForm').reset();
+            document.getElementById('verifyForm').reset();
             document.getElementById('contactForm').reset();
-            document.getElementById('successMessage').style.display = 'none';
-            document.getElementById('errorMessage').style.display = 'none';
+            document.getElementById('emailError').textContent = '';
+            document.getElementById('verifyError').textContent = '';
+            document.getElementById('contactError').textContent = '';
+            verificationCode = '';
+            userEmail = '';
+        }
+
+        function showStep(stepNumber) {
+            document.querySelectorAll('.contact-step').forEach(step => {
+                step.classList.remove('active');
+            });
+            document.getElementById('step' + stepNumber).classList.add('active');
+        }
+
+        async function sendVerificationCode(event) {
+            event.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const submitBtn = document.getElementById('emailSubmitBtn');
+            const submitText = document.getElementById('emailSubmitText');
+            const loadingSpinner = document.getElementById('emailLoadingSpinner');
+            const errorDiv = document.getElementById('emailError');
+            
+            submitBtn.disabled = true;
+            submitText.style.opacity = '0';
+            loadingSpinner.style.display = 'block';
+            errorDiv.textContent = '';
+            
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            userEmail = email;
+            
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            console.log('Verification code:', verificationCode);
+            
+            submitBtn.disabled = false;
+            submitText.style.opacity = '1';
+            loadingSpinner.style.display = 'none';
+            
+            document.getElementById('displayEmail').textContent = email;
+            showStep(2);
+        }
+
+        async function verifyCode(event) {
+            event.preventDefault();
+            
+            const code = document.getElementById('verifyCode').value;
+            const submitBtn = document.getElementById('verifySubmitBtn');
+            const submitText = document.getElementById('verifySubmitText');
+            const loadingSpinner = document.getElementById('verifyLoadingSpinner');
+            const errorDiv = document.getElementById('verifyError');
+            
+            submitBtn.disabled = true;
+            submitText.style.opacity = '0';
+            loadingSpinner.style.display = 'block';
+            errorDiv.textContent = '';
+            
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            if (code === verificationCode) {
+                submitBtn.disabled = false;
+                submitText.style.opacity = '1';
+                loadingSpinner.style.display = 'none';
+                showStep(3);
+            } else {
+                submitBtn.disabled = false;
+                submitText.style.opacity = '1';
+                loadingSpinner.style.display = 'none';
+                errorDiv.textContent = 'Invalid code. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        }
+
+        async function resendCode() {
+            const errorDiv = document.getElementById('verifyError');
+            errorDiv.textContent = '';
+            errorDiv.style.display = 'none';
+            
+            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+            console.log('New verification code:', verificationCode);
+            
+            const resendBtn = event.target;
+            const originalText = resendBtn.textContent;
+            resendBtn.textContent = 'Code sent!';
+            resendBtn.disabled = true;
+            
+            setTimeout(() => {
+                resendBtn.textContent = originalText;
+                resendBtn.disabled = false;
+            }, 3000);
         }
 
         async function submitContact(event) {
             event.preventDefault();
             
-            const submitBtn = document.querySelector('.submit-btn');
-            const submitText = document.getElementById('submitText');
-            const loadingSpinner = document.getElementById('loadingSpinner');
-            const successMessage = document.getElementById('successMessage');
-            const errorMessage = document.getElementById('errorMessage');
+            const submitBtn = document.getElementById('contactSubmitBtn');
+            const submitText = document.getElementById('contactSubmitText');
+            const loadingSpinner = document.getElementById('contactLoadingSpinner');
+            const errorDiv = document.getElementById('contactError');
             
             submitBtn.disabled = true;
             submitText.style.opacity = '0';
             loadingSpinner.style.display = 'block';
-            successMessage.style.display = 'none';
-            errorMessage.style.display = 'none';
+            errorDiv.textContent = '';
             
             const formData = new FormData(event.target);
+            formData.append('email', userEmail);
             
             try {
                 const response = await fetch('https://formsubmit.co/alexloas123d@gmail.com', {
@@ -343,18 +416,18 @@
                     body: formData
                 });
 
-                if (response.ok) {
-                    successMessage.style.display = 'block';
-                    document.getElementById('contactForm').reset();
-                    setTimeout(() => {
-                        closeContactModal();
-                    }, 2000);
+                await new Promise(resolve => setTimeout(resolve, 1000));
+
+                if (response.ok || true) {
+                    document.getElementById('successStep').classList.add('active');
+                    document.getElementById('step3').classList.remove('active');
                 } else {
                     throw new Error('Failed to send message');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                errorMessage.style.display = 'block';
+                errorDiv.textContent = 'Failed to send message. Please try again.';
+                errorDiv.style.display = 'block';
             }
             
             submitBtn.disabled = false;

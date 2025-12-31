@@ -192,70 +192,87 @@
     </div>
     
     <div id="contactModal" class="modal">
+        <div class="modal-overlay" onclick="closeContactModal()"></div>
         <div class="modal-content">
-            <span class="close" onclick="closeContactModal()">&times;</span>
+            <button class="modal-close" onclick="closeContactModal()">×</button>
             
             <div id="step1" class="contact-step active">
-                <h3 class="modal-title">Get in Touch</h3>
-                <p class="modal-subtitle">Enter your email to receive a verification code</p>
+                <div class="step-header">
+                    <h3>Verify Your Email</h3>
+                    <p>We'll send you a code to confirm it's really you</p>
+                </div>
                 <form id="emailForm" onsubmit="sendVerificationCode(event)">
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" placeholder="you@example.com" required>
+                    <div class="input-group">
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <div class="input-line"></div>
                     </div>
-                    <button type="submit" class="submit-btn" id="emailSubmitBtn">
-                        <span id="emailSubmitText">Send Verification Code</span>
-                        <div class="loading-spinner" id="emailLoadingSpinner"></div>
+                    <button type="submit" class="action-btn" id="emailSubmitBtn">
+                        <span id="emailSubmitText">Continue</span>
+                        <div class="btn-loader" id="emailLoader"></div>
                     </button>
                 </form>
-                <div id="emailError" class="error-message"></div>
             </div>
             
             <div id="step2" class="contact-step">
-                <h3 class="modal-title">Check Your Inbox</h3>
-                <p class="modal-subtitle">We sent a 6-digit code to <span id="displayEmail"></span></p>
-                <form id="verifyForm" onsubmit="verifyCode(event)">
-                    <div class="form-group">
-                        <label for="verifyCode">Verification Code</label>
-                        <input type="text" id="verifyCode" name="code" maxlength="6" placeholder="000000" required>
-                    </div>
-                    <button type="submit" class="submit-btn" id="verifySubmitBtn">
-                        <span id="verifySubmitText">Verify Email</span>
-                        <div class="loading-spinner" id="verifyLoadingSpinner"></div>
-                    </button>
-                </form>
-                <div class="resend-section">
-                    <p>Didn't receive the code?</p>
-                    <button class="resend-btn" onclick="resendCode()">Resend Code</button>
+                <div class="step-header">
+                    <h3>Check Your Inbox</h3>
+                    <p>Enter the 6-digit code we sent to</p>
+                    <span class="email-display" id="displayEmail"></span>
                 </div>
-                <div id="verifyError" class="error-message"></div>
+                <form id="verifyForm" onsubmit="verifyCode(event)">
+                    <div class="code-inputs">
+                        <input type="text" maxlength="1" class="code-input" data-index="0">
+                        <input type="text" maxlength="1" class="code-input" data-index="1">
+                        <input type="text" maxlength="1" class="code-input" data-index="2">
+                        <input type="text" maxlength="1" class="code-input" data-index="3">
+                        <input type="text" maxlength="1" class="code-input" data-index="4">
+                        <input type="text" maxlength="1" class="code-input" data-index="5">
+                    </div>
+                    <div class="verify-error" id="verifyError"></div>
+                    <button type="submit" class="action-btn" id="verifySubmitBtn">
+                        <span id="verifySubmitText">Verify Code</span>
+                        <div class="btn-loader" id="verifyLoader"></div>
+                    </button>
+                    <div class="resend-link">
+                        <span>Didn't get it?</span>
+                        <button type="button" class="text-btn" onclick="resendCode()">Resend</button>
+                    </div>
+                </form>
             </div>
             
             <div id="step3" class="contact-step">
-                <h3 class="modal-title">Tell Me About Your Project</h3>
-                <p class="modal-subtitle">Email verified successfully!</p>
+                <div class="step-header">
+                    <div class="verified-badge">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3>Tell Me About Your Project</h3>
+                    <p>What can I help you build?</p>
+                </div>
                 <form id="contactForm" onsubmit="submitContact(event)">
-                    <div class="form-group">
-                        <label for="username">Name / Username</label>
-                        <input type="text" id="username" name="username" placeholder="Your name" required>
+                    <div class="input-group">
+                        <input type="text" id="username" placeholder="Your name" required>
+                        <div class="input-line"></div>
                     </div>
-                    <div class="form-group">
-                        <label for="service">Project Details</label>
-                        <textarea id="service" name="service" rows="5" placeholder="Tell me about your project, budget, timeline, etc." required></textarea>
+                    <div class="input-group">
+                        <textarea id="service" rows="4" placeholder="Describe your project, budget, and timeline..." required></textarea>
+                        <div class="input-line"></div>
                     </div>
-                    <button type="submit" class="submit-btn" id="contactSubmitBtn">
+                    <button type="submit" class="action-btn" id="contactSubmitBtn">
                         <span id="contactSubmitText">Send Message</span>
-                        <div class="loading-spinner" id="contactLoadingSpinner"></div>
+                        <div class="btn-loader" id="contactLoader"></div>
                     </button>
                 </form>
-                <div id="contactError" class="error-message"></div>
             </div>
             
             <div id="successStep" class="contact-step">
-                <div class="success-icon">✓</div>
-                <h3 class="modal-title">Message Sent!</h3>
-                <p class="success-text">Thanks for reaching out. I'll get back to you within 24 hours.</p>
-                <button class="submit-btn" onclick="closeContactModal()">Close</button>
+                <div class="success-state">
+                    <div class="success-icon">
+                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    </div>
+                    <h3>Message Sent!</h3>
+                    <p>I'll get back to you within 24 hours</p>
+                    <button class="action-btn" onclick="closeContactModal()">Done</button>
+                </div>
             </div>
         </div>
     </div>
@@ -263,6 +280,7 @@
     <script>
         let verificationCode = '';
         let userEmail = '';
+        let codeInputs = [];
 
         function showProjects() {
             document.getElementById('home-section').style.display = 'none';
@@ -286,6 +304,7 @@
             document.getElementById('contactModal').style.display = 'flex';
             document.body.style.overflow = 'hidden';
             resetModalSteps();
+            setupCodeInputs();
         }
 
         function closeContactModal() {
@@ -302,11 +321,13 @@
             document.getElementById('emailForm').reset();
             document.getElementById('verifyForm').reset();
             document.getElementById('contactForm').reset();
-            document.getElementById('emailError').textContent = '';
             document.getElementById('verifyError').textContent = '';
-            document.getElementById('contactError').textContent = '';
             verificationCode = '';
             userEmail = '';
+            codeInputs.forEach(input => {
+                input.value = '';
+                input.classList.remove('filled');
+            });
         }
 
         function showStep(stepNumber) {
@@ -316,68 +337,137 @@
             document.getElementById('step' + stepNumber).classList.add('active');
         }
 
+        function setupCodeInputs() {
+            codeInputs = document.querySelectorAll('.code-input');
+            codeInputs.forEach((input, index) => {
+                input.addEventListener('input', function(e) {
+                    if (this.value) {
+                        this.classList.add('filled');
+                        if (index < codeInputs.length - 1) {
+                            codeInputs[index + 1].focus();
+                        }
+                    } else {
+                        this.classList.remove('filled');
+                    }
+                });
+
+                input.addEventListener('keydown', function(e) {
+                    if (e.key === 'Backspace' && !this.value && index > 0) {
+                        codeInputs[index - 1].focus();
+                    }
+                });
+
+                input.addEventListener('paste', function(e) {
+                    e.preventDefault();
+                    const pastedData = e.clipboardData.getData('text').slice(0, 6);
+                    pastedData.split('').forEach((char, i) => {
+                        if (i < codeInputs.length && /\d/.test(char)) {
+                            codeInputs[i].value = char;
+                            codeInputs[i].classList.add('filled');
+                        }
+                    });
+                    if (pastedData.length >= 6) {
+                        codeInputs[5].focus();
+                    }
+                });
+            });
+        }
+
         async function sendVerificationCode(event) {
             event.preventDefault();
             
             const email = document.getElementById('email').value;
             const submitBtn = document.getElementById('emailSubmitBtn');
             const submitText = document.getElementById('emailSubmitText');
-            const loadingSpinner = document.getElementById('emailLoadingSpinner');
-            const errorDiv = document.getElementById('emailError');
+            const loader = document.getElementById('emailLoader');
             
             submitBtn.disabled = true;
             submitText.style.opacity = '0';
-            loadingSpinner.style.display = 'block';
-            errorDiv.textContent = '';
+            loader.style.display = 'block';
             
-            verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
-            userEmail = email;
-            
-            await new Promise(resolve => setTimeout(resolve, 1500));
-            
-            console.log('Verification code:', verificationCode);
-            
-            submitBtn.disabled = false;
-            submitText.style.opacity = '1';
-            loadingSpinner.style.display = 'none';
-            
-            document.getElementById('displayEmail').textContent = email;
-            showStep(2);
+            try {
+                const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        service_id: 'service_xxxxxxx',
+                        template_id: 'template_xxxxxxx',
+                        user_id: 'YOUR_PUBLIC_KEY',
+                        template_params: {
+                            to_email: email,
+                            verification_code: verificationCode,
+                        }
+                    })
+                });
+
+                await new Promise(resolve => setTimeout(resolve, 1500));
+                
+                verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
+                userEmail = email;
+                
+                console.log('Verification code sent to:', email);
+                console.log('Code:', verificationCode);
+                
+                submitBtn.disabled = false;
+                submitText.style.opacity = '1';
+                loader.style.display = 'none';
+                
+                document.getElementById('displayEmail').textContent = email;
+                showStep(2);
+                setTimeout(() => codeInputs[0].focus(), 100);
+            } catch (error) {
+                console.error('Error:', error);
+                submitBtn.disabled = false;
+                submitText.style.opacity = '1';
+                loader.style.display = 'none';
+            }
         }
 
         async function verifyCode(event) {
             event.preventDefault();
             
-            const code = document.getElementById('verifyCode').value;
+            const code = Array.from(codeInputs).map(input => input.value).join('');
             const submitBtn = document.getElementById('verifySubmitBtn');
             const submitText = document.getElementById('verifySubmitText');
-            const loadingSpinner = document.getElementById('verifyLoadingSpinner');
+            const loader = document.getElementById('verifyLoader');
             const errorDiv = document.getElementById('verifyError');
+            
+            if (code.length !== 6) {
+                errorDiv.textContent = 'Please enter all 6 digits';
+                errorDiv.style.display = 'block';
+                return;
+            }
             
             submitBtn.disabled = true;
             submitText.style.opacity = '0';
-            loadingSpinner.style.display = 'block';
-            errorDiv.textContent = '';
+            loader.style.display = 'block';
+            errorDiv.style.display = 'none';
             
-            await new Promise(resolve => setTimeout(resolve, 1000));
+            await new Promise(resolve => setTimeout(resolve, 800));
             
             if (code === verificationCode) {
                 submitBtn.disabled = false;
                 submitText.style.opacity = '1';
-                loadingSpinner.style.display = 'none';
+                loader.style.display = 'none';
                 showStep(3);
             } else {
                 submitBtn.disabled = false;
                 submitText.style.opacity = '1';
-                loadingSpinner.style.display = 'none';
+                loader.style.display = 'none';
                 errorDiv.textContent = 'Invalid code. Please try again.';
                 errorDiv.style.display = 'block';
+                codeInputs.forEach(input => {
+                    input.value = '';
+                    input.classList.remove('filled');
+                });
+                codeInputs[0].focus();
             }
         }
 
         async function resendCode() {
             const errorDiv = document.getElementById('verifyError');
-            errorDiv.textContent = '';
             errorDiv.style.display = 'none';
             
             verificationCode = Math.floor(100000 + Math.random() * 900000).toString();
@@ -385,7 +475,7 @@
             
             const resendBtn = event.target;
             const originalText = resendBtn.textContent;
-            resendBtn.textContent = 'Code sent!';
+            resendBtn.textContent = 'Sent!';
             resendBtn.disabled = true;
             
             setTimeout(() => {
@@ -399,16 +489,17 @@
             
             const submitBtn = document.getElementById('contactSubmitBtn');
             const submitText = document.getElementById('contactSubmitText');
-            const loadingSpinner = document.getElementById('contactLoadingSpinner');
-            const errorDiv = document.getElementById('contactError');
+            const loader = document.getElementById('contactLoader');
             
             submitBtn.disabled = true;
             submitText.style.opacity = '0';
-            loadingSpinner.style.display = 'block';
-            errorDiv.textContent = '';
+            loader.style.display = 'block';
             
             const formData = new FormData(event.target);
             formData.append('email', userEmail);
+            formData.append('_subject', 'New Portfolio Contact - Website Development');
+            formData.append('_template', 'table');
+            formData.append('_captcha', 'false');
             
             try {
                 const response = await fetch('https://formsubmit.co/alexloas123d@gmail.com', {
@@ -418,28 +509,15 @@
 
                 await new Promise(resolve => setTimeout(resolve, 1000));
 
-                if (response.ok || true) {
-                    document.getElementById('successStep').classList.add('active');
-                    document.getElementById('step3').classList.remove('active');
-                } else {
-                    throw new Error('Failed to send message');
-                }
+                document.getElementById('successStep').classList.add('active');
+                document.getElementById('step3').classList.remove('active');
             } catch (error) {
                 console.error('Error:', error);
-                errorDiv.textContent = 'Failed to send message. Please try again.';
-                errorDiv.style.display = 'block';
             }
             
             submitBtn.disabled = false;
             submitText.style.opacity = '1';
-            loadingSpinner.style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('contactModal');
-            if (event.target === modal) {
-                closeContactModal();
-            }
+            loader.style.display = 'none';
         }
     </script>
 </body>

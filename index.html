@@ -12,180 +12,287 @@
         <div class="gradient-orbs">
             <div class="orb orb-1"></div>
             <div class="orb orb-2"></div>
+            <div class="orb orb-3"></div>
         </div>
     </div>
     
-    <div class="container">
-        <div id="home-section">
-            <div class="header">
-                <h1 class="name">Alex</h1>
-                <p class="description">
-                    Hello, I am a developer focused on scripting and building in Roblox Studio. 
-                    I create games, systems, and experiences using Lua and Roblox APIs.
-                </p>
-            </div>
-            
-            <div class="projects-section">
-                <button class="projects-btn" onclick="showProjects()">
-                    <span>Personal Projects</span>
-                </button>
-                <button class="info-btn" onclick="showInfo()">
-                    <span>Information</span>
-                </button>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">Alex</div>
+            <div class="nav-links">
+                <a href="#home" onclick="showHome()" class="nav-link active">Home</a>
+                <a href="#projects" onclick="showProjects()" class="nav-link">Projects</a>
+                <a href="#info" onclick="showInfo()" class="nav-link">Info</a>
+                <button class="nav-contact-btn" onclick="openContactModal()">Contact</button>
             </div>
         </div>
-        
-        <div id="info-section" class="info-content">
-            <button class="back-btn" onclick="showHome()">← Back to Home</button>
-            
-            <h2 class="section-title">Information</h2>
-            
-            <div class="info-grid">
-                <div class="info-card">
-                    <div class="info-icon">💰</div>
-                    <div class="info-title">Affordable Rates</div>
-                    <div class="info-desc">
-                        Affordable pricing for high-quality Roblox development work.
+    </nav>
+    
+    <div class="container">
+        <div id="home-section">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <span class="badge-dot"></span>
+                    Available for work
+                </div>
+                <h1 class="hero-title">
+                    Roblox Developer &
+                    <span class="gradient-text">Creative Builder</span>
+                </h1>
+                <p class="hero-description">
+                    Specializing in game systems, immersive experiences, and innovative scripting solutions for Roblox. 
+                    Turning ideas into engaging gameplay through clean code and creative design.
+                </p>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">3+</div>
+                        <div class="stat-label">Years</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Satisfaction</div>
                     </div>
                 </div>
-                
-                <div class="info-card">
-                    <div class="info-icon">📞</div>
-                    <div class="info-title">Communication</div>
-                    <div class="info-desc">
-                        Regular updates throughout the project and regular feedback on it.
-                    </div>
-                </div>
-                
-                <div class="info-card payment-card">
-                    <div class="info-icon">💳</div>
-                    <div class="info-title">Payment Methods</div>
-                    <div class="payment-methods">
-                        <div class="payment-item">
-                            <img src="Robux.png" alt="Robux Logo" class="payment-icon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
-                            <span>Robux</span>
-                        </div>
-                        <div class="payment-item">
-                            <img src="Paypal.png" alt="PayPal Logo" class="payment-icon" style="width: 24px; height: 24px; vertical-align: middle; margin-right: 8px;">
-                            <span>PayPal</span>
-                        </div>
-                    </div>
+                <div class="hero-actions">
+                    <button class="primary-btn" onclick="showProjects()">
+                        <span>View Projects</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
+                    <button class="secondary-btn" onclick="openContactModal()">
+                        <span>Get in Touch</span>
+                    </button>
                 </div>
             </div>
             
-            <h2 class="section-title extras-title">Extras</h2>
-            
-            <div class="extras-grid">
-                <div class="info-card extras-card">
-                    <div class="info-icon">🌐</div>
-                    <div class="info-title">Website Development</div>
-                    <div class="info-desc">
-                        I also build websites when I'm not working on Roblox projects. Clean designs that work well on all devices.
+            <div class="skills-section">
+                <h3 class="skills-title">Core Skills</h3>
+                <div class="skills-grid">
+                    <div class="skill-card">
+                        <div class="skill-icon">⚡</div>
+                        <div class="skill-name">Lua Scripting</div>
                     </div>
-                    <button class="contact-btn" onclick="openContactModal()">
-                        Contact Me
-                    </button>
+                    <div class="skill-card">
+                        <div class="skill-icon">🎮</div>
+                        <div class="skill-name">Game Systems</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🎨</div>
+                        <div class="skill-name">UI Design</div>
+                    </div>
+                    <div class="skill-card">
+                        <div class="skill-icon">🔧</div>
+                        <div class="skill-name">Problem Solving</div>
+                    </div>
                 </div>
             </div>
         </div>
         
         <div id="projects-section" class="projects-content">
-            <button class="back-btn" onclick="showHome()">← Back to Home</button>
-            
-            <h2 class="section-title">My Projects</h2>
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Explore my latest work and technical showcases</p>
+            </div>
             
             <div class="projects-grid">
-                <div class="project-card">
-                    <div class="project-title">Lockpick System</div>
-                    <div class="project-desc">
-                        Being able to lockpick doors with a progress UI Bar & Interactive Feedback.
-                    </div>
-                    <div class="project-video">
+                <div class="project-card featured">
+                    <div class="project-badge">Featured</div>
+                    <div class="project-image">
                         <iframe src="https://www.youtube.com/embed/KUqn_CHy0Fo" 
-                                title="Lockpick System Demo" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Luau</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Lockpick System</h3>
+                        <p class="project-desc">
+                            Interactive lockpicking mechanics with real-time progress tracking, smooth animations, 
+                            and responsive feedback system for immersive gameplay.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Luau</span>
+                            <span class="tech-tag">TweenService</span>
+                            <span class="tech-tag">UI Design</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-title">3D UI Inventory</div>
-                    <div class="project-desc">
-                        3D UI with cartoony design elements & Inventory Presets.
-                    </div>
-                    <div class="project-video">
+                    <div class="project-image">
                         <iframe src="https://www.youtube.com/embed/Mc0rz0-86eM" 
-                                title="3D UI Demo" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Luau</span>
-                        <span class="tech-tag">GUI</span>
+                    <div class="project-content">
+                        <h3 class="project-title">3D UI Inventory</h3>
+                        <p class="project-desc">
+                            Modern 3D user interface with cartoony aesthetics, customizable inventory presets, 
+                            and smooth item management system.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Luau</span>
+                            <span class="tech-tag">3D GUI</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-title">Advanced Hitbox Raycasting</div>
-                    <div class="project-desc">
-                        Precise raycasting system for accurate hit detection and collision handling in combat systems.
-                    </div>
-                    <div class="project-video">
+                    <div class="project-image">
                         <iframe src="https://www.youtube.com/embed/ZBXuAyAxAg4" 
-                                title="Advanced Hitbox Raycasting Demo" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Luau</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Advanced Hitbox System</h3>
+                        <p class="project-desc">
+                            Precision raycasting engine for combat mechanics, featuring accurate hit detection 
+                            and optimized collision handling for smooth performance.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Luau</span>
+                            <span class="tech-tag">Raycasting</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-title">Advanced 3D Mainmenu</div>
-                    <div class="project-desc">
-                        Horror ambience mainmenu with sounds & responsive 3D UI.
-                    </div>
-                    <div class="project-video">
+                    <div class="project-image">
                         <iframe src="https://www.youtube.com/embed/7tsK64R9viM" 
-                                title="Advanced 3D Mainmenu Demo" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Luau</span>
-                        <span class="tech-tag">GUI</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Horror Main Menu</h3>
+                        <p class="project-desc">
+                            Atmospheric 3D main menu with eerie sound design, dynamic lighting effects, 
+                            and responsive interface elements for horror games.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Luau</span>
+                            <span class="tech-tag">3D GUI</span>
+                            <span class="tech-tag">Audio</span>
+                        </div>
                     </div>
                 </div>
                 
                 <div class="project-card">
-                    <div class="project-title">Adaptive UI</div>
-                    <div class="project-desc">
-                        Responsive 2D UI using UIScales, TweenServices, etc.
-                    </div>
-                    <div class="project-video">
+                    <div class="project-image">
                         <iframe src="https://www.youtube.com/embed/kBG9oKPzfX0" 
-                                title="Adaptive UI Demo" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen>
                         </iframe>
                     </div>
-                    <div class="project-tech">
-                        <span class="tech-tag">Luau</span>
-                        <span class="tech-tag">GUI</span>
+                    <div class="project-content">
+                        <h3 class="project-title">Adaptive UI Framework</h3>
+                        <p class="project-desc">
+                            Fully responsive 2D interface system utilizing UIScale, TweenService, 
+                            and automatic scaling for all screen sizes and devices.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Luau</span>
+                            <span class="tech-tag">Responsive</span>
+                        </div>
                     </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="info-section" class="info-content">
+            <div class="section-header">
+                <h2 class="section-title">Why Work With Me</h2>
+                <p class="section-subtitle">Professional service with attention to detail</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <div class="info-icon">💰</div>
+                    </div>
+                    <h3 class="info-title">Competitive Pricing</h3>
+                    <p class="info-desc">
+                        High-quality development services at rates that work for your budget. 
+                        Professional results without breaking the bank.
+                    </p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <div class="info-icon">⚡</div>
+                    </div>
+                    <h3 class="info-title">Fast Delivery</h3>
+                    <p class="info-desc">
+                        Efficient workflow and timely project completion. Meet your deadlines 
+                        with quality work delivered on schedule.
+                    </p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <div class="info-icon">📞</div>
+                    </div>
+                    <h3 class="info-title">Clear Communication</h3>
+                    <p class="info-desc">
+                        Regular updates throughout development with responsive feedback. 
+                        Stay informed every step of the way.
+                    </p>
+                </div>
+                
+                <div class="info-card">
+                    <div class="info-icon-wrapper">
+                        <div class="info-icon">🎯</div>
+                    </div>
+                    <h3 class="info-title">Quality Focused</h3>
+                    <p class="info-desc">
+                        Clean, optimized code with best practices. Every project receives 
+                        thorough testing and attention to detail.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="payment-section">
+                <h3 class="payment-title">Payment Methods</h3>
+                <div class="payment-cards">
+                    <div class="payment-card">
+                        <img src="Robux.png" alt="Robux" class="payment-img">
+                        <span class="payment-name">Robux</span>
+                    </div>
+                    <div class="payment-card">
+                        <img src="Paypal.png" alt="PayPal" class="payment-img">
+                        <span class="payment-name">PayPal</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="extra-services">
+                <h3 class="extra-title">Additional Services</h3>
+                <div class="extra-card">
+                    <div class="extra-icon">🌐</div>
+                    <div class="extra-content">
+                        <h4 class="extra-name">Website Development</h4>
+                        <p class="extra-desc">
+                            Modern, responsive websites built with clean code. Portfolio sites, 
+                            landing pages, and web applications that look great on any device.
+                        </p>
+                    </div>
+                    <button class="extra-btn" onclick="openContactModal()">
+                        Learn More
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12h14M12 5l7 7-7 7"/>
+                        </svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -198,12 +305,18 @@
             
             <div id="step1" class="contact-step active">
                 <div class="step-header">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                    </div>
                     <h3>Verify Your Email</h3>
-                    <p>We'll send you a code to confirm it's really you</p>
+                    <p>Enter your email to get started. We'll send you a verification code.</p>
                 </div>
                 <form id="emailForm" onsubmit="sendVerificationCode(event)">
                     <div class="input-group">
-                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <input type="email" id="email" placeholder="your.email@example.com" required>
                         <div class="input-line"></div>
                     </div>
                     <button type="submit" class="action-btn" id="emailSubmitBtn">
@@ -215,8 +328,14 @@
             
             <div id="step2" class="contact-step">
                 <div class="step-header">
+                    <div class="step-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                    </div>
                     <h3>Check Your Inbox</h3>
-                    <p>Enter the 6-digit code we sent to</p>
+                    <p>We sent a 6-digit code to</p>
                     <span class="email-display" id="displayEmail"></span>
                 </div>
                 <form id="verifyForm" onsubmit="verifyCode(event)">
@@ -234,8 +353,8 @@
                         <div class="btn-loader" id="verifyLoader"></div>
                     </button>
                     <div class="resend-link">
-                        <span>Didn't get it?</span>
-                        <button type="button" class="text-btn" onclick="resendCode()">Resend</button>
+                        <span>Didn't receive it?</span>
+                        <button type="button" class="text-btn" onclick="resendCode(event)">Resend Code</button>
                     </div>
                 </form>
             </div>
@@ -243,10 +362,12 @@
             <div id="step3" class="contact-step">
                 <div class="step-header">
                     <div class="verified-badge">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
                     </div>
                     <h3>Tell Me About Your Project</h3>
-                    <p>What can I help you build?</p>
+                    <p>Share details about what you need built</p>
                 </div>
                 <form id="contactForm" onsubmit="submitContact(event)">
                     <div class="input-group">
@@ -254,7 +375,7 @@
                         <div class="input-line"></div>
                     </div>
                     <div class="input-group">
-                        <textarea id="service" rows="4" placeholder="Describe your project, budget, and timeline..." required></textarea>
+                        <textarea id="service" rows="5" placeholder="Describe your project, budget, timeline, and any specific requirements..." required></textarea>
                         <div class="input-line"></div>
                     </div>
                     <button type="submit" class="action-btn" id="contactSubmitBtn">
@@ -267,15 +388,28 @@
             <div id="successStep" class="contact-step">
                 <div class="success-state">
                     <div class="success-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
                     </div>
-                    <h3>Message Sent!</h3>
-                    <p>I'll get back to you within 24 hours</p>
+                    <h3>Message Sent Successfully!</h3>
+                    <p>Thanks for reaching out. I'll review your project details and get back to you within 24 hours.</p>
                     <button class="action-btn" onclick="closeContactModal()">Done</button>
                 </div>
             </div>
         </div>
     </div>
+    
+    <footer class="footer">
+        <div class="footer-content">
+            <p class="footer-text">© 2024 Alex. Roblox Developer & Creative Builder</p>
+            <div class="footer-links">
+                <a href="#home" onclick="showHome()">Home</a>
+                <a href="#projects" onclick="showProjects()">Projects</a>
+                <a href="#info" onclick="showInfo()">Info</a>
+            </div>
+        </div>
+    </footer>
     
     <script>
         let verificationCode = '';
@@ -286,18 +420,37 @@
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('info-section').classList.remove('active');
             document.getElementById('projects-section').classList.add('active');
+            updateNavLinks('projects');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         function showInfo() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('projects-section').classList.remove('active');
             document.getElementById('info-section').classList.add('active');
+            updateNavLinks('info');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
         
         function showHome() {
             document.getElementById('projects-section').classList.remove('active');
             document.getElementById('info-section').classList.remove('active');
             document.getElementById('home-section').style.display = 'block';
+            updateNavLinks('home');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateNavLinks(section) {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            if (section === 'home') {
+                document.querySelector('.nav-link[href="#home"]').classList.add('active');
+            } else if (section === 'projects') {
+                document.querySelector('.nav-link[href="#projects"]').classList.add('active');
+            } else if (section === 'info') {
+                document.querySelector('.nav-link[href="#info"]').classList.add('active');
+            }
         }
 
         function openContactModal() {
@@ -334,7 +487,11 @@
             document.querySelectorAll('.contact-step').forEach(step => {
                 step.classList.remove('active');
             });
-            document.getElementById('step' + stepNumber).classList.add('active');
+            if (stepNumber === 'success') {
+                document.getElementById('successStep').classList.add('active');
+            } else {
+                document.getElementById('step' + stepNumber).classList.add('active');
+            }
         }
 
         function setupCodeInputs() {
@@ -407,9 +564,6 @@
 
                 await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                console.log('Verification code sent to:', email);
-                console.log('Code:', verificationCode);
-                
                 submitBtn.disabled = false;
                 submitText.style.opacity = '1';
                 loader.style.display = 'none';
@@ -418,7 +572,6 @@
                 showStep(2);
                 setTimeout(() => codeInputs[0].focus(), 100);
             } catch (error) {
-                console.error('Error:', error);
                 submitBtn.disabled = false;
                 submitText.style.opacity = '1';
                 loader.style.display = 'none';
@@ -466,7 +619,7 @@
             }
         }
 
-        async function resendCode() {
+        async function resendCode(event) {
             const errorDiv = document.getElementById('verifyError');
             errorDiv.style.display = 'none';
             
@@ -488,8 +641,6 @@
                         }
                     })
                 });
-                
-                console.log('New verification code:', verificationCode);
             } catch (error) {
                 console.error('Error resending:', error);
             }
@@ -516,9 +667,14 @@
             submitText.style.opacity = '0';
             loader.style.display = 'block';
             
-            const formData = new FormData(event.target);
+            const username = document.getElementById('username').value;
+            const service = document.getElementById('service').value;
+            
+            const formData = new FormData();
+            formData.append('username', username);
             formData.append('email', userEmail);
-            formData.append('_subject', 'New Portfolio Contact - Website Development');
+            formData.append('service', service);
+            formData.append('_subject', 'New Portfolio Contact - ' + username);
             formData.append('_template', 'table');
             formData.append('_captcha', 'false');
             
@@ -530,8 +686,7 @@
 
                 await new Promise(resolve => setTimeout(resolve, 1000));
 
-                document.getElementById('successStep').classList.add('active');
-                document.getElementById('step3').classList.remove('active');
+                showStep('success');
             } catch (error) {
                 console.error('Error:', error);
             }

@@ -37,6 +37,51 @@
                     I create immersive experiences using Lua and advanced Roblox APIs.
                 </p>
             </div>
+
+            <div class="home-sections">
+                <div class="home-section">
+                    <h2 class="section-heading">Why Work With Me</h2>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon">💰</div>
+                            <div class="feature-title">Affordable Rates</div>
+                            <div class="feature-desc">
+                                Competitive pricing for high-quality Roblox development work that fits your budget.
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">📞</div>
+                            <div class="feature-title">Clear Communication</div>
+                            <div class="feature-desc">
+                                Regular updates throughout the project with consistent feedback and transparency.
+                            </div>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon">⚡</div>
+                            <div class="feature-title">Fast Delivery</div>
+                            <div class="feature-desc">
+                                Quick turnaround times without compromising on quality or attention to detail.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="quality-section">
+                    <div class="quality-badge">Quality Guarantee</div>
+                    <h2 class="quality-title">High Quality Work, Guaranteed</h2>
+                    <p class="quality-desc">
+                        I take pride in delivering exceptional work that exceeds expectations. You only pay once you're completely satisfied with the results. Every project is built with clean code, optimized performance, and meticulous attention to detail.
+                    </p>
+                </div>
+
+                <div class="cta-section">
+                    <h2 class="cta-title">Ready to Start Your Project?</h2>
+                    <p class="cta-desc">
+                        Let's discuss your vision and bring your Roblox game to life. Whether you need scripting, systems, or UI development, I'm here to help.
+                    </p>
+                    <button class="cta-button" onclick="openContactModal()">Contact Me</button>
+                </div>
+            </div>
             
             <div class="nav-section">
                 <button class="nav-btn" onclick="showProjects()">
@@ -362,18 +407,21 @@
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('info-section').classList.remove('active');
             document.getElementById('projects-section').classList.add('active');
+            window.scrollTo(0, 0);
         }
         
         function showInfo() {
             document.getElementById('home-section').style.display = 'none';
             document.getElementById('projects-section').classList.remove('active');
             document.getElementById('info-section').classList.add('active');
+            window.scrollTo(0, 0);
         }
         
         function showHome() {
             document.getElementById('projects-section').classList.remove('active');
             document.getElementById('info-section').classList.remove('active');
             document.getElementById('home-section').style.display = 'block';
+            window.scrollTo(0, 0);
         }
 
         function openContactModal() {

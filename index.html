@@ -218,26 +218,39 @@
             background: linear-gradient(135deg, rgba(124, 58, 237, 0.1), rgba(139, 92, 246, 0.1));
             border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 24px;
-            padding: 50px 40px;
+            padding: 60px 50px;
             text-align: center;
         }
 
         .contact-box h3 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             font-weight: 700;
-            margin-bottom: 18px;
+            margin-bottom: 25px;
+        }
+
+        .contact-box h3 .contact-white {
             color: #fff;
         }
 
+        .contact-box h3 .contact-gradient {
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
         .contact-box p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: #bbb;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
             line-height: 1.7;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .contact-cta {
-            background: linear-gradient(135deg, #7c3aed, #8b5cf6);
+            background: linear-gradient(135deg, #8b5cf6, #a78bfa);
             color: #fff;
             padding: 18px 50px;
             border-radius: 12px;
@@ -246,12 +259,12 @@
             font-size: 1.1rem;
             cursor: pointer;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
         }
 
         .contact-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.5);
+            transform: translateY(-3px);
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.6);
         }
 
         .quick-links {
@@ -592,11 +605,11 @@
         .modal-content {
             background: #0f0f17;
             margin: auto;
-            padding: 50px;
+            padding: 60px;
             border: 1px solid rgba(139, 92, 246, 0.3);
             border-radius: 24px;
             width: 90%;
-            max-width: 500px;
+            max-width: 1200px;
             position: relative;
             z-index: 1001;
             box-shadow: 0 30px 100px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(139, 92, 246, 0.2);
@@ -647,6 +660,157 @@
         .contact-step.active {
             display: block;
             animation: stepFadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .contact-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .contact-left {
+            background: rgba(88, 101, 242, 0.05);
+            border: 1px solid rgba(88, 101, 242, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+        }
+
+        .contact-right {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .modal-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .modal-title .title-white {
+            color: #fff;
+        }
+
+        .modal-title .title-gradient {
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .modal-subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 40px;
+            font-size: 1.05rem;
+        }
+
+        .discord-box-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #5865f2, #7289da);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+        }
+
+        .discord-box-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .discord-box-desc {
+            color: #999;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
+
+        .discord-link {
+            display: inline-block;
+            color: #6366f1;
+            font-weight: 600;
+            font-size: 1.05rem;
+            text-decoration: none;
+            padding: 8px;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+
+        .discord-link:hover {
+            background: rgba(99, 102, 241, 0.1);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-field {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-label {
+            color: #fff;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-input,
+        .form-textarea {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 14px 16px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .form-input:focus,
+        .form-textarea:focus {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(139, 92, 246, 0.5);
+        }
+
+        .form-input::placeholder,
+        .form-textarea::placeholder {
+            color: #666;
+        }
+
+        .form-textarea {
+            resize: none;
+            min-height: 150px;
+        }
+
+        .submit-button {
+            width: 100%;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            color: #fff;
+            padding: 16px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
         @keyframes stepFadeIn {
@@ -1064,12 +1228,6 @@
 
             <div class="hero-split">
                 <div class="hero-right">
-                    <div class="contact-box">
-                        <h3>Contact Me</h3>
-                        <p>Ready to build something great? Let's discuss your project and make it happen.</p>
-                        <button class="contact-cta" onclick="openContactModal()">Get In Touch</button>
-                    </div>
-                    
                     <div class="quick-links">
                         <button class="quick-link-btn" onclick="showProjects()">
                             <div class="link-icon">
@@ -1087,6 +1245,12 @@
                                 <div class="link-desc">Rates & payment methods</div>
                             </div>
                         </button>
+                    </div>
+                    
+                    <div class="contact-box">
+                        <h3><span class="contact-white">Contact</span> <span class="contact-gradient">Me</span></h3>
+                        <p>Ready to build something great? Let's discuss your project and make it happen.</p>
+                        <button class="contact-cta" onclick="openContactModal()">Get In Touch</button>
                     </div>
                 </div>
             </div>
@@ -1287,104 +1451,48 @@
         <div class="modal-content">
             <button class="modal-close" onclick="closeContactModal()">×</button>
             
-            <div id="contactChoice" class="contact-step active">
-                <div class="step-header">
-                    <h3>Get In Touch</h3>
-                    <p>Pick whichever works best for you</p>
-                </div>
+            <div class="contact-step active">
+                <h2 class="modal-title"><span class="title-white">Contact</span> <span class="title-gradient">Me</span></h2>
+                <p class="modal-subtitle">Contact me about a project, partnership, or anything else you need help with.</p>
                 
-                <div class="contact-options">
-                    <button class="contact-option" onclick="selectDiscord()">
-                        <div class="option-icon discord-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor">
+                <div class="contact-layout">
+                    <div class="contact-left">
+                        <div class="discord-box-icon">
+                            <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
                                 <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
                             </svg>
                         </div>
-                        <div class="option-content">
-                            <div class="option-title">Discord</div>
-                            <div class="option-desc">Message me directly</div>
-                        </div>
-                    </button>
+                        <h3 class="discord-box-title">Discord</h3>
+                        <p class="discord-box-desc">Add me on Discord</p>
+                        <a href="#" class="discord-link" onclick="copyDiscordUsername(); return false;">Alex2136</a>
+                    </div>
                     
-                    <button class="contact-option" onclick="selectEmail()">
-                        <div class="option-icon email-icon">
-                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </div>
-                        <div class="option-content">
-                            <div class="option-title">Email</div>
-                            <div class="option-desc">Send me a message</div>
-                        </div>
-                    </button>
-                </div>
-            </div>
-            
-            <div id="discordStep" class="contact-step">
-                <div class="discord-info">
-                    <div class="discord-avatar">
-                        <svg width="64" height="64" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515a.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0a12.64 12.64 0 0 0-.617-1.25a.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057a19.9 19.9 0 0 0 5.993 3.03a.078.078 0 0 0 .084-.028a14.09 14.09 0 0 0 1.226-1.994a.076.076 0 0 0-.041-.106a13.107 13.107 0 0 1-1.872-.892a.077.077 0 0 1-.008-.128a10.2 10.2 0 0 0 .372-.292a.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127a12.299 12.299 0 0 1-1.873.892a.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028a19.839 19.839 0 0 0 6.002-3.03a.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.956-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419c0-1.333.955-2.419 2.157-2.419c1.21 0 2.176 1.096 2.157 2.42c0 1.333-.946 2.418-2.157 2.418z"/>
-                        </svg>
+                    <div class="contact-right">
+                        <form id="contactForm" onsubmit="submitContact(event)">
+                            <div class="form-row">
+                                <div class="form-field">
+                                    <label class="form-label">Name</label>
+                                    <input type="text" class="form-input" name="name" placeholder="Your name" required>
+                                </div>
+                                <div class="form-field">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" class="form-input" name="email" placeholder="your.email@example.com" required>
+                                </div>
+                            </div>
+                            
+                            <div class="form-field">
+                                <label class="form-label">Subject</label>
+                                <input type="text" class="form-input" name="subject" placeholder="What's this about?" required>
+                            </div>
+                            
+                            <div class="form-field">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-textarea" name="message" placeholder="Tell me what you're thinking about..." required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-button">Send Message</button>
+                        </form>
                     </div>
-                    <h3>Contact Me on Discord</h3>
-                    <p class="discord-subtitle">Send me a message about your project</p>
-                    <div class="discord-username">
-                        <span class="username-label">Username:</span>
-                        <span class="username-value">Alex2136</span>
-                        <button class="copy-btn" onclick="copyDiscordUsername()">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-                            </svg>
-                        </button>
-                    </div>
-                    <button class="action-btn" onclick="closeContactModal()">Done</button>
-                    <button class="text-btn back-link" onclick="backToChoice()">← Back</button>
-                </div>
-            </div>
-            
-            <div id="emailStep" class="contact-step">
-                <button class="text-btn back-link" onclick="backToChoice()">← Back</button>
-                <div class="step-header">
-                    <h3>Send Me a Message</h3>
-                    <p>I'll get back to you within 24 hours</p>
-                </div>
-                <form id="contactForm" onsubmit="submitContact(event)">
-                    <div class="input-group">
-                        <input type="text" id="username" placeholder="Your Name" required>
-                        <div class="input-line"></div>
-                    </div>
-                    <div class="input-group">
-                        <input type="email" id="email" placeholder="Your Email" required>
-                        <div class="input-line"></div>
-                    </div>
-                    <div class="input-group">
-                        <input type="text" id="discord" placeholder="Your Discord Username" required>
-                        <div class="input-line"></div>
-                    </div>
-                    <div class="input-group">
-                        <textarea id="message" rows="4" placeholder="Tell me about your project..." required></textarea>
-                        <div class="input-line"></div>
-                    </div>
-                    <button type="submit" class="action-btn" id="contactSubmitBtn">
-                        <span id="contactSubmitText">Send Message</span>
-                        <div class="btn-loader" id="contactLoader"></div>
-                    </button>
-                </form>
-            </div>
-            
-            <div id="successStep" class="contact-step">
-                <div class="success-state">
-                    <div class="success-icon">
-                        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"/>
-                        </svg>
-                    </div>
-                    <h3>Message Sent!</h3>
-                    <p>I'll get back to you soon</p>
-                    <button class="action-btn" onclick="closeContactModal()">Done</button>
                 </div>
             </div>
         </div>
@@ -1452,58 +1560,18 @@
         function closeContactModal() {
             document.getElementById('contactModal').style.display = 'none';
             document.body.style.overflow = 'auto';
-            resetModalSteps();
-        }
-
-        function resetModalSteps() {
-            document.querySelectorAll('.contact-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            document.getElementById('contactChoice').classList.add('active');
             if (document.getElementById('contactForm')) {
                 document.getElementById('contactForm').reset();
             }
         }
 
-        function selectDiscord() {
-            document.getElementById('contactChoice').classList.remove('active');
-            document.getElementById('discordStep').classList.add('active');
-        }
-
-        function selectEmail() {
-            document.getElementById('contactChoice').classList.remove('active');
-            document.getElementById('emailStep').classList.add('active');
-        }
-
-        function backToChoice() {
-            document.querySelectorAll('.contact-step').forEach(step => {
-                step.classList.remove('active');
-            });
-            document.getElementById('contactChoice').classList.add('active');
-        }
-
         function copyDiscordUsername() {
             navigator.clipboard.writeText('Alex2136');
-            const btn = event.target.closest('.copy-btn');
-            const originalHTML = btn.innerHTML;
-            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>';
-            btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
-            setTimeout(() => {
-                btn.innerHTML = originalHTML;
-                btn.style.background = '';
-            }, 2000);
+            alert('Discord username copied!');
         }
 
         async function submitContact(event) {
             event.preventDefault();
-            
-            const submitBtn = document.getElementById('contactSubmitBtn');
-            const submitText = document.getElementById('contactSubmitText');
-            const loader = document.getElementById('contactLoader');
-            
-            submitBtn.disabled = true;
-            submitText.style.opacity = '0';
-            loader.style.display = 'block';
             
             const formData = new FormData(event.target);
             formData.append('_subject', 'New Portfolio Contact - Roblox Development');
@@ -1516,18 +1584,12 @@
                     body: formData
                 });
 
-                await new Promise(resolve => setTimeout(resolve, 1000));
-
-                document.getElementById('successStep').classList.add('active');
-                document.getElementById('emailStep').classList.remove('active');
+                alert('Message sent successfully!');
+                closeContactModal();
             } catch (error) {
                 console.error('Error:', error);
                 alert('There was an error sending your message. Please try again.');
             }
-            
-            submitBtn.disabled = false;
-            submitText.style.opacity = '1';
-            loader.style.display = 'none';
         }
     </script>
 </body>

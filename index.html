@@ -730,6 +730,46 @@
             box-shadow: 0 10px 30px rgba(99, 102, 241, 0.4);
         }
 
+        .success-popup {
+            position: fixed;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: #fff;
+            padding: 20px 40px;
+            border-radius: 12px;
+            box-shadow: 0 20px 60px rgba(16, 185, 129, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            z-index: 3000;
+            opacity: 0;
+            transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .success-popup.show {
+            transform: translateX(-50%) translateY(0);
+            opacity: 1;
+        }
+
+        .success-popup-icon {
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .success-popup-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+        }
+
         @media (max-width: 768px) {
             .name {
                 font-size: 3.5rem;
@@ -824,6 +864,11 @@
         </div>
     </div>
     
+    <div class="success-popup" id="successPopup">
+        <div class="success-popup-icon">✓</div>
+        <div class="success-popup-text">Message sent successfully!</div>
+    </div>
+    
     <div class="container">
         <div id="home-section">
             <div class="header">
@@ -847,7 +892,9 @@
                             </div>
                         </button>
                         <button class="quick-link-btn" onclick="showInfo()">
-                            <div class="link-icon emoji-icon">💼</div>
+                            <div class="link-icon">
+                                <img src="Info.png" alt="Info">
+                            </div>
                             <div class="link-content">
                                 <div class="link-title">More Info</div>
                                 <div class="link-desc">Rates & payment methods</div>
@@ -918,7 +965,7 @@
                     <div class="info-icon">💰</div>
                     <div class="info-title">Affordable Rates</div>
                     <div class="info-desc">
-                        My prices are reasonable and we can work something out that fits your budget. No crazy rates here.
+                        My prices are reasonable and we can work something out that fits your budget.
                     </div>
                 </div>
                 
@@ -970,7 +1017,7 @@
                     <div class="project-badge">Framework</div>
                     <div class="project-title">Gun Framework</div>
                     <div class="project-desc">
-                        Complete weapon system with Secure-Cast integration for accurate hitboxes and smooth shooting mechanics that feel responsive and fair.
+                        Gun Framework system and I am using secure-cast its a known module for reliable projectiles, such as bullets.
                     </div>
                     <div class="project-video">
                         <iframe src="https://www.youtube.com/embed/-lPzw9oD5ro" 
@@ -1031,7 +1078,7 @@
                     <div class="project-badge">Systems</div>
                     <div class="project-title">Advanced Hitbox Raycasting</div>
                     <div class="project-desc">
-                        Precise raycasting for combat systems. Makes hits register properly instead of feeling janky.
+                        Precise raycasting for combat systems. Makes hits register properly instead of feeling inaccurate.
                     </div>
                     <div class="project-video">
                         <iframe src="https://www.youtube.com/embed/ZBXuAyAxAg4" 
@@ -1162,7 +1209,13 @@
                     body: formData
                 });
 
-                alert('Message sent successfully!');
+                const popup = document.getElementById('successPopup');
+                popup.classList.add('show');
+                
+                setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 3000);
+                
                 document.getElementById('contactForm').reset();
             } catch (error) {
                 console.error('Error:', error);

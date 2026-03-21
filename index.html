@@ -383,14 +383,7 @@ transition:box-shadow 0.3s;pointer-events:none;
 }
 .project-card:hover{transform:translateY(-4px);border-color:var(--border-blue);background:var(--card2)}
 .project-card:hover::after{box-shadow:0 20px 60px rgba(20,60,200,0.2)}
-.video-wrap{
-width:100%;height:190px;background:#0a0a10;overflow:hidden;
-position:relative;flex-shrink:0;
-}
-.video-wrap iframe{
-position:absolute;top:0;left:0;
-width:100%;height:100%;border:0;
-}
+
 .project-body{padding:16px 18px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .project-desc{font-size:0.83rem;color:var(--text2);line-height:1.6;flex:1}
 .project-chip{
@@ -660,6 +653,96 @@ font-family:'Geist',sans-serif;
 .no-results{text-align:center;padding:80px 0;color:var(--text3);font-size:0.9rem}
 .proj-card-hidden{display:none!important}
 
+#lightbox{
+position:fixed;inset:0;z-index:9000;
+display:flex;align-items:center;justify-content:center;
+opacity:0;pointer-events:none;
+transition:opacity 0.25s;
+}
+#lightbox.open{opacity:1;pointer-events:all}
+.lb-backdrop{
+position:absolute;inset:0;
+background:rgba(0,0,0,0.88);
+backdrop-filter:blur(8px);
+}
+.lb-modal{
+position:relative;z-index:1;
+width:90%;max-width:880px;
+background:#0e0e14;
+border-radius:12px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,0.08);
+box-shadow:0 40px 120px rgba(0,0,0,0.9);
+transform:scale(0.95);
+transition:transform 0.25s cubic-bezier(0.16,1,0.3,1);
+}
+#lightbox.open .lb-modal{transform:scale(1)}
+.lb-bar{
+display:flex;align-items:center;
+background:#1a1a24;
+padding:10px 16px;
+border-bottom:1px solid rgba(255,255,255,0.06);
+gap:12px;
+}
+.lb-dots{display:flex;gap:7px;align-items:center}
+.lb-dot{
+width:12px;height:12px;border-radius:50%;cursor:none;
+}
+.lb-dot.red{background:#ff5f57}
+.lb-dot.yellow{background:#febc2e}
+.lb-dot.green{background:#28c840}
+.lb-path{
+flex:1;text-align:center;
+font-family:'Geist Mono',monospace;
+font-size:0.78rem;color:var(--text3);
+}
+.lb-esc{
+font-size:0.72rem;color:var(--text3);
+font-family:'Geist Mono',monospace;
+cursor:none;
+}
+.lb-title-row{
+padding:12px 18px 10px;
+font-size:0.95rem;font-weight:600;color:var(--white);
+background:#0e0e14;
+border-bottom:1px solid rgba(255,255,255,0.04);
+}
+.lb-video{
+position:relative;
+padding-bottom:56.25%;height:0;
+}
+.lb-video iframe{
+position:absolute;top:0;left:0;
+width:100%;height:100%;border:0;
+}
+
+.video-wrap{
+width:100%;height:190px;background:#0a0a10;overflow:hidden;
+position:relative;flex-shrink:0;cursor:none;
+}
+.video-thumb{
+width:100%;height:100%;object-fit:cover;
+display:block;
+transition:transform 0.3s;
+}
+.project-card:hover .video-thumb{transform:scale(1.03)}
+.video-play-btn{
+position:absolute;inset:0;
+display:flex;align-items:center;justify-content:center;
+background:rgba(0,0,0,0.3);
+transition:background 0.2s;
+}
+.project-card:hover .video-play-btn{background:rgba(0,0,0,0.15)}
+.play-circle{
+width:44px;height:44px;border-radius:50%;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(4px);
+border:1px solid rgba(255,255,255,0.2);
+display:flex;align-items:center;justify-content:center;
+transition:transform 0.2s,background 0.2s;
+}
+.project-card:hover .play-circle{transform:scale(1.1);background:rgba(255,255,255,0.22)}
+
 .scroll-reveal{
 opacity:0;transform:translateY(28px);
 transition:opacity 0.7s cubic-bezier(0.16,1,0.3,1),transform 0.7s cubic-bezier(0.16,1,0.3,1);
@@ -843,7 +926,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
       </div>
       <div class="projects-grid" id="grid-framework">
         <div class="project-card" data-cat="framework" data-name="gun framework">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/-lPzw9oD5ro" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('-lPzw9oD5ro', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/-lPzw9oD5ro/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">Framework</span>
             <div class="project-name">Gun Framework</div>
@@ -862,7 +945,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
       </div>
       <div class="projects-grid" id="grid-system">
         <div class="project-card" data-cat="system" data-name="projectile system">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/CrWVP8Itb90" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('CrWVP8Itb90', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/CrWVP8Itb90/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">System</span>
             <div class="project-name">Projectile System</div>
@@ -871,7 +954,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
           </div>
         </div>
         <div class="project-card" data-cat="system" data-name="lockpick system">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/KUqn_CHy0Fo" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('KUqn_CHy0Fo', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/KUqn_CHy0Fo/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">System</span>
             <div class="project-name">Lockpick System</div>
@@ -880,7 +963,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
           </div>
         </div>
         <div class="project-card" data-cat="system" data-name="vault system">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/VJtsuwh5Y6c" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('VJtsuwh5Y6c', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/VJtsuwh5Y6c/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">System</span>
             <div class="project-name">Vault System</div>
@@ -889,7 +972,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
           </div>
         </div>
         <div class="project-card" data-cat="system" data-name="advanced hitbox raycasting">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/ZBXuAyAxAg4" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('ZBXuAyAxAg4', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/ZBXuAyAxAg4/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">System</span>
             <div class="project-name">Advanced Hitbox Raycasting</div>
@@ -908,7 +991,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
       </div>
       <div class="projects-grid" id="grid-ui">
         <div class="project-card" data-cat="ui" data-name="3d inventory">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/Mc0rz0-86eM" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('Mc0rz0-86eM', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/Mc0rz0-86eM/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">UI</span>
             <div class="project-name">3D Inventory</div>
@@ -917,7 +1000,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
           </div>
         </div>
         <div class="project-card" data-cat="ui" data-name="3d horror main menu">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/7tsK64R9viM" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('7tsK64R9viM', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/7tsK64R9viM/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">UI</span>
             <div class="project-name">3D Horror Main Menu</div>
@@ -926,7 +1009,7 @@ footer{padding:20px;flex-direction:column;gap:12px;text-align:center}
           </div>
         </div>
         <div class="project-card" data-cat="ui" data-name="adaptive ui system">
-          <div class="video-wrap"><iframe src="https://www.youtube.com/embed/kBG9oKPzfX0" allowfullscreen loading="lazy"></iframe></div>
+          <div class="video-wrap" onclick="openLightbox('kBG9oKPzfX0', this.closest('.project-card').querySelector('.project-name').textContent)"><img class="video-thumb" src="https://img.youtube.com/vi/kBG9oKPzfX0/mqdefault.jpg" alt="thumbnail" loading="lazy"><div class="video-play-btn"><div class="play-circle"><svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M5 3l14 9-14 9V3z"/></svg></div></div></div>
           <div class="project-body">
             <span class="project-chip">UI</span>
             <div class="project-name">Adaptive UI System</div>
@@ -1141,6 +1224,46 @@ function initReveal() {
   }, { threshold: 0.15 });
   els.forEach(el => obs.observe(el));
 }
+
+function openLightbox(videoId, title) {
+  const lb = document.getElementById('lightbox');
+  const frame = document.getElementById('lb-frame');
+  const slug = title.toLowerCase().replace(/\s+/g, '-');
+  document.getElementById('lb-path').textContent = '~/portfolio/' + slug;
+  document.getElementById('lb-title').textContent = title;
+  frame.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
+  lb.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  const lb = document.getElementById('lightbox');
+  document.getElementById('lb-frame').src = '';
+  lb.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
 </script>
+
+<div id="lightbox">
+  <div class="lb-backdrop" onclick="closeLightbox()"></div>
+  <div class="lb-modal">
+    <div class="lb-bar">
+      <div class="lb-dots">
+        <span class="lb-dot red" onclick="closeLightbox()"></span>
+        <span class="lb-dot yellow"></span>
+        <span class="lb-dot green"></span>
+      </div>
+      <div class="lb-path" id="lb-path">~/portfolio/project</div>
+      <div class="lb-esc" onclick="closeLightbox()">ESC to close</div>
+    </div>
+    <div class="lb-title-row" id="lb-title">Project</div>
+    <div class="lb-video">
+      <iframe id="lb-frame" allowfullscreen allow="autoplay; encrypted-media"></iframe>
+    </div>
+  </div>
+</div>
+
 </body>
 </html>

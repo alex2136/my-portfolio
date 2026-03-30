@@ -627,7 +627,7 @@ footer {
       <div class="skills-grid">
         <div class="skill-cell">
           <div class="skill-name">Luau / OOP</div>
-          <div class="skill-desc">Metatables, inheritance, proper class patterns.</div>
+          <div class="skill-desc">Metatables, inheritance, proper class patterns. No spaghetti.</div>
         </div>
         <div class="skill-cell">
           <div class="skill-name">Remotes / networking</div>
@@ -635,11 +635,11 @@ footer {
         </div>
         <div class="skill-cell">
           <div class="skill-name">DataStores</div>
-          <div class="skill-desc">ProfileService/ProfileStore, retry logic, data versioning, migration-safe schemas.</div>
+          <div class="skill-desc">ProfileService, retry logic, data versioning, migration-safe schemas.</div>
         </div>
         <div class="skill-cell">
-          <div class="skill-name">Frameworks</div>
-          <div class="skill-desc">Knit for service/controller architecture. Fusion for reactive UI state.</div>
+          <div class="skill-name">Frameworks / Modules</div>
+          <div class="skill-desc">Various frameworks depending on the project. Custom modules for reusable, project-specific logic.</div>
         </div>
         <div class="skill-cell">
           <div class="skill-name">UI / TweenService</div>
@@ -648,6 +648,18 @@ footer {
         <div class="skill-cell">
           <div class="skill-name">Raycasting</div>
           <div class="skill-desc">Hitbox systems, projectile simulation, spatial queries for combat.</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-name">Networking library</div>
+          <div class="skill-desc">Custom client-server communication layers, structured remote handling, type-safe bridges.</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-name">Chrono</div>
+          <div class="skill-desc">Time-based scheduling, reliable task management, frame-accurate timers.</div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-name">ECS</div>
+          <div class="skill-desc">Entity Component System architecture for data-driven, decoupled game logic.</div>
         </div>
       </div>
     </section>
@@ -667,84 +679,93 @@ footer {
         </div>
         <div class="code-body">
 <pre>
-<span class="cm">-- PlayerData class</span>
-<span class="cm">-- handles per-player data with autosave and safe defaults</span>
-
 <span class="kw">local</span> DataStoreService <span class="kw">=</span> game:<span class="fn">GetService</span>(<span class="str">"DataStoreService"</span>)
-<span class="kw">local</span> Players          <span class="kw">=</span> game:<span class="fn">GetService</span>(<span class="str">"Players"</span>)
 
 <span class="kw">local</span> Store <span class="kw">=</span> DataStoreService:<span class="fn">GetDataStore</span>(<span class="str">"PlayerData_v1"</span>)
 
-<span class="kw">local</span> <span class="cl">PlayerData</span> <span class="kw">=</span> {}
-<span class="cl">PlayerData</span>.__index <span class="kw">=</span> <span class="cl">PlayerData</span>
-
-<span class="kw">local</span> DEFAULTS <span class="kw">=</span> {
-    Cash    <span class="kw">=</span> <span class="num">0</span>,
-    Level   <span class="kw">=</span> <span class="num">1</span>,
-    XP      <span class="kw">=</span> <span class="num">0</span>,
-    Playtime <span class="kw">=</span> <span class="num">0</span>,
+<span class="kw">type</span> <span class="cl">Data</span> = {
+    Cash     : <span class="kw">number</span>,
+    Level    : <span class="kw">number</span>,
+    XP       : <span class="kw">number</span>,
+    Playtime : <span class="kw">number</span>,
 }
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>.<span class="fn">new</span>(player: Player)
-    <span class="kw">local</span> self <span class="kw">=</span> <span class="fn">setmetatable</span>({}, <span class="cl">PlayerData</span>)
+<span class="kw">type</span> <span class="cl">PlayerDataImpl</span> = {
+    __index  : <span class="cl">PlayerDataImpl</span>,
+    new      : (player: Player) -> <span class="cl">PlayerData</span>,
+    Get      : (self: <span class="cl">PlayerData</span>, key: <span class="kw">string</span>) -> <span class="kw">any</span>,
+    Set      : (self: <span class="cl">PlayerData</span>, key: <span class="kw">string</span>, value: <span class="kw">any</span>) -> (),
+    Increment: (self: <span class="cl">PlayerData</span>, key: <span class="kw">string</span>, amount: <span class="kw">number</span>) -> (),
+    Save     : (self: <span class="cl">PlayerData</span>) -> (),
+    Destroy  : (self: <span class="cl">PlayerData</span>) -> (),
+}
 
-    self.Player    <span class="kw">=</span> player
-    self.UserId    <span class="kw">=</span> player.UserId
-    self._data     <span class="kw">=</span> {}
-    self._loaded   <span class="kw">=</span> <span class="kw">false</span>
-    self._joinTime <span class="kw">=</span> os.<span class="fn">time</span>()
+<span class="kw">type</span> <span class="cl">PlayerData</span> = <span class="kw">typeof</span>(<span class="fn">setmetatable</span>({} <span class="kw">as</span> {
+    _player  : Player,
+    _data    : <span class="cl">Data</span>,
+    _loaded  : <span class="kw">boolean</span>,
+    _joinTime: <span class="kw">number</span>,
+}, {} <span class="kw">as</span> <span class="cl">PlayerDataImpl</span>))
 
-    self:<span class="fn">_load</span>()
+<span class="kw">local</span> DEFAULTS: <span class="cl">Data</span> = <span class="fn">table.freeze</span>({
+    Cash     = <span class="num">0</span>,
+    Level    = <span class="num">1</span>,
+    XP       = <span class="num">0</span>,
+    Playtime = <span class="num">0</span>,
+})
+
+<span class="kw">local</span> <span class="cl">PlayerData</span> = {} <span class="kw">as</span> <span class="cl">PlayerDataImpl</span>
+<span class="cl">PlayerData</span>.__index = <span class="cl">PlayerData</span>
+
+<span class="kw">function</span> <span class="cl">PlayerData</span>.<span class="fn">new</span>(player: Player): <span class="cl">PlayerData</span>
+    <span class="kw">local</span> self = <span class="fn">setmetatable</span>({
+        _player   = player,
+        _data     = <span class="fn">table.clone</span>(DEFAULTS),
+        _loaded   = <span class="kw">false</span>,
+        _joinTime = os.<span class="fn">time</span>(),
+    }, <span class="cl">PlayerData</span>)
+
+    <span class="kw">local</span> ok, saved = <span class="fn">pcall</span>(Store.GetAsync, Store, player.UserId)
+
+    <span class="kw">if</span> ok <span class="kw">and</span> <span class="kw">typeof</span>(saved) == <span class="str">"table"</span> <span class="kw">then</span>
+        <span class="kw">for</span> k <span class="kw">in</span> DEFAULTS <span class="kw">do</span>
+            <span class="kw">if</span> saved[k] ~= <span class="kw">nil</span> <span class="kw">then</span>
+                self._data[k] = saved[k]
+            <span class="kw">end</span>
+        <span class="kw">end</span>
+    <span class="kw">end</span>
+
+    self._loaded = <span class="kw">true</span>
     <span class="kw">return</span> self
 <span class="kw">end</span>
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">_load</span>()
-    <span class="kw">local</span> ok, result <span class="kw">=</span> <span class="fn">pcall</span>(<span class="kw">function</span>()
-        <span class="kw">return</span> Store:<span class="fn">GetAsync</span>(self.UserId)
-    <span class="kw">end</span>)
-
-    <span class="kw">if</span> ok <span class="kw">and</span> result <span class="kw">then</span>
-        <span class="cm">-- merge saved data with defaults so new keys are always present</span>
-        <span class="kw">for</span> k, v <span class="kw">in</span> <span class="fn">pairs</span>(DEFAULTS) <span class="kw">do</span>
-            self._data[k] <span class="kw">=</span> result[k] <span class="kw">~=</span> <span class="kw">nil</span> <span class="kw">and</span> result[k] <span class="kw">or</span> v
-        <span class="kw">end</span>
-    <span class="kw">else</span>
-        self._data <span class="kw">=</span> <span class="fn">table.clone</span>(DEFAULTS)
-    <span class="kw">end</span>
-
-    self._loaded <span class="kw">=</span> <span class="kw">true</span>
-<span class="kw">end</span>
-
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Get</span>(key: string)
+<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Get</span>(key: <span class="kw">string</span>): <span class="kw">any</span>
     <span class="kw">return</span> self._data[key]
 <span class="kw">end</span>
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Set</span>(key: string, value: any)
-    self._data[key] <span class="kw">=</span> value
+<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Set</span>(key: <span class="kw">string</span>, value: <span class="kw">any</span>): ()
+    self._data[key] = value
 <span class="kw">end</span>
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Increment</span>(key: string, amount: number)
-    self._data[key] <span class="kw">=</span> (self._data[key] <span class="kw">or</span> <span class="num">0</span>) <span class="kw">+</span> amount
+<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Increment</span>(key: <span class="kw">string</span>, amount: <span class="kw">number</span>): ()
+    self._data[key] = (self._data[key] <span class="kw">or</span> <span class="num">0</span>) + amount
 <span class="kw">end</span>
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Save</span>()
-    <span class="kw">if</span> <span class="kw">not</span> self._loaded <span class="kw">then</span> <span class="kw">return</span> <span class="kw">end</span>
+<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Save</span>(): ()
+    <span class="kw">if not</span> self._loaded <span class="kw">then return end</span>
 
-    self._data.Playtime <span class="kw">=</span> self._data.Playtime <span class="kw">+</span> (os.<span class="fn">time</span>() <span class="kw">-</span> self._joinTime)
-    self._joinTime <span class="kw">=</span> os.<span class="fn">time</span>()
+    self._data.Playtime += os.<span class="fn">time</span>() - self._joinTime
+    self._joinTime = os.<span class="fn">time</span>()
 
-    <span class="kw">local</span> ok, err <span class="kw">=</span> <span class="fn">pcall</span>(<span class="kw">function</span>()
-        Store:<span class="fn">SetAsync</span>(self.UserId, self._data)
-    <span class="kw">end</span>)
-
-    <span class="kw">if</span> <span class="kw">not</span> ok <span class="kw">then</span>
-        <span class="fn">warn</span>(<span class="str">"[PlayerData] save failed for"</span>, self.UserId, err)
+    <span class="kw">local</span> ok, err = <span class="fn">pcall</span>(Store.SetAsync, Store, self._player.UserId, self._data)
+    <span class="kw">if not</span> ok <span class="kw">then</span>
+        <span class="fn">warn</span>(<span class="str">`[PlayerData] failed to save {self._player.UserId}: {err}`</span>)
     <span class="kw">end</span>
 <span class="kw">end</span>
 
-<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Destroy</span>()
+<span class="kw">function</span> <span class="cl">PlayerData</span>:<span class="fn">Destroy</span>(): ()
     self:<span class="fn">Save</span>()
-    self._data <span class="kw">=</span> <span class="kw">nil</span>
+    <span class="fn">setmetatable</span>(self, <span class="kw">nil</span>)
 <span class="kw">end</span>
 
 <span class="kw">return</span> <span class="cl">PlayerData</span>
@@ -880,13 +901,13 @@ footer {
           </tr>
           <tr>
             <td><span class="rate-type">Ongoing / project basis</span></td>
-            <td>Long-term dev work, price depending on the job</td>
+            <td>Long-term dev work, price depends on what's needed</td>
             <td>PayPal</td>
           </tr>
         </tbody>
       </table>
       <div class="rates-note">
-        <p>Prices are negotiable — message me for more info.</p>
+        <p>Prices are negotiable — message me with the scope and I'll give you a number. Paid work only. No spec work.</p>
       </div>
     </section>
   </div>
@@ -901,7 +922,7 @@ footer {
       <div class="contact-block">
         <div class="contact-left">
           <div class="contact-heading">Discord is the best way to reach me.</div>
-          <p class="contact-sub">Message me with what you need and I'll get back to you within 24 hours.</p>
+          <p class="contact-sub">Message me with what you need and I'll sort out a price. I'll get back to you within 24 hours.</p>
         </div>
         <div class="contact-right">
           <div class="discord-handle" onclick="copyDiscord()">

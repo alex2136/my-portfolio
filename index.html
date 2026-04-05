@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>alex2136</title>
+<title>ExodusF8</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -35,7 +35,6 @@ body {
 ::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb { background: var(--border2); }
 
-/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
@@ -80,14 +79,12 @@ nav {
 .nav-section-btn:hover { color: var(--white); background: rgba(255,255,255,0.03); }
 .nav-section-btn.active { color: var(--off-white); }
 
-/* ── WRAPPER ── */
 .content {
   max-width: 860px;
   margin: 0 auto;
   padding: 0 40px;
 }
 
-/* ── HERO ── */
 #hero {
   padding-top: 140px;
   padding-bottom: 120px;
@@ -134,7 +131,6 @@ nav {
   margin-top: 56px;
 }
 
-.meta-item {}
 .meta-num {
   font-family: 'DM Mono', monospace;
   font-size: 1.4rem;
@@ -150,7 +146,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* ── SECTIONS ── */
 .section {
   padding: 80px 0;
   border-bottom: 1px solid var(--border);
@@ -177,7 +172,6 @@ nav {
   text-transform: uppercase;
 }
 
-/* ── SKILLS ── */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -206,7 +200,6 @@ nav {
   line-height: 1.6;
 }
 
-/* ── CODE ── */
 .code-block-wrap {
   border: 1px solid var(--border);
   background: var(--surface);
@@ -249,7 +242,6 @@ nav {
   white-space: pre;
 }
 
-/* syntax highlight — manual, no library */
 .kw  { color: #888; }
 .fn  { color: #b8b8b8; }
 .str { color: #717171; }
@@ -257,7 +249,6 @@ nav {
 .num { color: #8a8a8a; }
 .cl  { color: #c4c4c4; font-weight: 500; }
 
-/* ── PROJECTS ── */
 .projects-list {
   display: flex;
   flex-direction: column;
@@ -289,7 +280,6 @@ nav {
 }
 .project-row:hover .project-thumb { filter: grayscale(0%); }
 
-.project-info {}
 .project-tag {
   font-family: 'DM Mono', monospace;
   font-size: 0.62rem;
@@ -318,7 +308,6 @@ nav {
 }
 .project-row:hover .project-arrow { color: var(--text2); transform: translateX(3px); }
 
-/* ── LIGHTBOX ── */
 #lightbox {
   position: fixed;
   inset: 0;
@@ -387,7 +376,6 @@ nav {
   border: 0;
 }
 
-/* ── RATES ── */
 .rates-table {
   width: 100%;
   border: 1px solid var(--border);
@@ -435,7 +423,6 @@ nav {
   line-height: 1.7;
 }
 
-/* ── CONTACT ── */
 .contact-block {
   border: 1px solid var(--border);
   padding: 36px;
@@ -445,7 +432,6 @@ nav {
   gap: 40px;
 }
 
-.contact-left {}
 .contact-heading {
   font-family: 'DM Mono', monospace;
   font-size: 1.1rem;
@@ -478,7 +464,7 @@ nav {
   cursor: pointer;
   transition: border-color 0.15s, background 0.15s;
 }
-.discord-handle:hover { border-color: var(--border2); background: var(--surface2); }
+.discord-handle:hover { background: var(--surface2); }
 
 .discord-icon {
   width: 16px;
@@ -512,7 +498,6 @@ nav {
   background: #4a9a6a;
 }
 
-/* ── TOAST ── */
 .toast {
   position: fixed;
   bottom: 24px;
@@ -531,7 +516,6 @@ nav {
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ── SCROLL REVEAL ── */
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -539,7 +523,6 @@ nav {
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 
-/* ── FOOTER ── */
 footer {
   padding: 32px 40px;
   border-top: 1px solid var(--border);
@@ -554,7 +537,6 @@ footer {
   color: var(--text3);
 }
 
-/* ── RESPONSIVE ── */
 @media (max-width: 700px) {
   nav { padding: 0 20px; }
   .nav-sections { display: none; }
@@ -578,7 +560,7 @@ footer {
 <div class="toast" id="toast">copied to clipboard</div>
 
 <nav>
-  <a href="#hero" class="nav-logo">alex2136</a>
+  <a href="#hero" class="nav-logo">ExodusF8</a>
   <div class="nav-sections">
     <button class="nav-section-btn" onclick="scrollTo('skills')">skills</button>
     <button class="nav-section-btn" onclick="scrollTo('code')">code</button>
@@ -590,10 +572,9 @@ footer {
 
 <main>
 
-  <!-- HERO -->
   <div class="content">
     <section id="hero">
-      <div class="hero-name">alex2136</div>
+      <div class="hero-name">ExodusF8</div>
       <div class="hero-role">Luau Developer</div>
       <div class="hero-line"></div>
       <p class="hero-desc">
@@ -606,7 +587,7 @@ footer {
           <div class="meta-label">years</div>
         </div>
         <div class="meta-item">
-          <div class="meta-num">8</div>
+          <div class="meta-num">10</div>
           <div class="meta-label">projects</div>
         </div>
         <div class="meta-item">
@@ -617,7 +598,6 @@ footer {
     </section>
   </div>
 
-  <!-- SKILLS -->
   <div class="content">
     <section id="skills" class="section reveal">
       <div class="section-header">
@@ -665,7 +645,6 @@ footer {
     </section>
   </div>
 
-  <!-- CODE -->
   <div class="content">
     <section id="code" class="section reveal">
       <div class="section-header">
@@ -775,7 +754,6 @@ footer {
     </section>
   </div>
 
-  <!-- PROJECTS -->
   <div class="content">
     <section id="projects" class="section reveal">
       <div class="section-header">
@@ -784,8 +762,8 @@ footer {
       </div>
       <div class="projects-list">
 
-        <div class="project-row" onclick="openLightbox('-lPzw9oD5ro','Gun Framework')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/-lPzw9oD5ro/mqdefault.jpg" alt="Gun Framework">
+        <div class="project-row" onclick="openLightbox('UsqTtrUZg1A','Gun Framework')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/UsqTtrUZg1A/mqdefault.jpg" alt="Gun Framework">
           <div class="project-info">
             <div class="project-tag">Framework</div>
             <div class="project-name">Gun Framework</div>
@@ -794,28 +772,8 @@ footer {
           <div class="project-arrow">→</div>
         </div>
 
-        <div class="project-row" onclick="openLightbox('CrWVP8Itb90','Projectile System')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/CrWVP8Itb90/mqdefault.jpg" alt="Projectile System">
-          <div class="project-info">
-            <div class="project-tag">System</div>
-            <div class="project-name">Projectile System</div>
-            <div class="project-desc">Press E to throw. Fireball by default, effects are fully swappable.</div>
-          </div>
-          <div class="project-arrow">→</div>
-        </div>
-
-        <div class="project-row" onclick="openLightbox('KUqn_CHy0Fo','Lockpick System')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/KUqn_CHy0Fo/mqdefault.jpg" alt="Lockpick System">
-          <div class="project-info">
-            <div class="project-tag">System</div>
-            <div class="project-name">Lockpick System</div>
-            <div class="project-desc">Interactive lockpicking with a smooth progress bar. Actually feels like something.</div>
-          </div>
-          <div class="project-arrow">→</div>
-        </div>
-
-        <div class="project-row" onclick="openLightbox('VJtsuwh5Y6c','Vault System')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/VJtsuwh5Y6c/mqdefault.jpg" alt="Vault System">
+        <div class="project-row" onclick="openLightbox('KZaGAI2Krtg','Vault System')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/KZaGAI2Krtg/mqdefault.jpg" alt="Vault System">
           <div class="project-info">
             <div class="project-tag">System</div>
             <div class="project-name">Vault System</div>
@@ -824,28 +782,38 @@ footer {
           <div class="project-arrow">→</div>
         </div>
 
-        <div class="project-row" onclick="openLightbox('ZBXuAyAxAg4','Advanced Hitbox Raycasting')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/ZBXuAyAxAg4/mqdefault.jpg" alt="Hitbox">
+        <div class="project-row" onclick="openLightbox('H1m-YQsI29w','CMDR Commands — Global Message')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/H1m-YQsI29w/mqdefault.jpg" alt="CMDR Commands">
+          <div class="project-info">
+            <div class="project-tag">Admin</div>
+            <div class="project-name">CMDR Commands — Global Message</div>
+            <div class="project-desc">Uses CMDR, supports any custom commands you want to add. This one's a global message command.</div>
+          </div>
+          <div class="project-arrow">→</div>
+        </div>
+
+        <div class="project-row" onclick="openLightbox('TtRUGvyL_qw','Gravity Pull Ability')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/TtRUGvyL_qw/mqdefault.jpg" alt="Gravity Pull Ability">
+          <div class="project-info">
+            <div class="project-tag">Ability</div>
+            <div class="project-name">Gravity Pull Ability</div>
+            <div class="project-desc">Ability with VFX that pulls targets toward the caster. Pull radius, force, and effects are all customizable.</div>
+          </div>
+          <div class="project-arrow">→</div>
+        </div>
+
+        <div class="project-row" onclick="openLightbox('7oXFKr7aSWY','Projectile System')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/7oXFKr7aSWY/mqdefault.jpg" alt="Projectile System">
           <div class="project-info">
             <div class="project-tag">System</div>
-            <div class="project-name">Advanced Hitbox Raycasting</div>
-            <div class="project-desc">Hits actually register where they should. Precise raycasting for combat systems.</div>
+            <div class="project-name">Projectile System</div>
+            <div class="project-desc">Press E to throw. Fireball by default, effects are fully swappable.</div>
           </div>
           <div class="project-arrow">→</div>
         </div>
 
-        <div class="project-row" onclick="openLightbox('Mc0rz0-86eM','3D Inventory')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/Mc0rz0-86eM/mqdefault.jpg" alt="3D Inventory">
-          <div class="project-info">
-            <div class="project-tag">UI</div>
-            <div class="project-name">3D Inventory</div>
-            <div class="project-desc">Cartoony 3D inventory, fully customizable with swappable presets.</div>
-          </div>
-          <div class="project-arrow">→</div>
-        </div>
-
-        <div class="project-row" onclick="openLightbox('7tsK64R9viM','3D Horror Main Menu')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/7tsK64R9viM/mqdefault.jpg" alt="Horror Menu">
+        <div class="project-row" onclick="openLightbox('Z75WkTEb01I','3D Horror Main Menu')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/Z75WkTEb01I/mqdefault.jpg" alt="Horror Menu">
           <div class="project-info">
             <div class="project-tag">UI</div>
             <div class="project-name">3D Horror Main Menu</div>
@@ -854,12 +822,12 @@ footer {
           <div class="project-arrow">→</div>
         </div>
 
-        <div class="project-row" onclick="openLightbox('kBG9oKPzfX0','Adaptive UI System')">
-          <img class="project-thumb" src="https://img.youtube.com/vi/kBG9oKPzfX0/mqdefault.jpg" alt="Adaptive UI">
+        <div class="project-row" onclick="openLightbox('yio2sEKvxG0','Advanced 3D UI Inventory')">
+          <img class="project-thumb" src="https://img.youtube.com/vi/yio2sEKvxG0/mqdefault.jpg" alt="3D Inventory">
           <div class="project-info">
             <div class="project-tag">UI</div>
-            <div class="project-name">Adaptive UI System</div>
-            <div class="project-desc">UIScale + TweenService. Fully responsive across every screen size.</div>
+            <div class="project-name">Advanced 3D UI Inventory</div>
+            <div class="project-desc">Cartoony 3D inventory, fully customizable with swappable presets.</div>
           </div>
           <div class="project-arrow">→</div>
         </div>
@@ -868,7 +836,6 @@ footer {
     </section>
   </div>
 
-  <!-- RATES -->
   <div class="content">
     <section id="rates" class="section reveal">
       <div class="section-header">
@@ -912,7 +879,6 @@ footer {
     </section>
   </div>
 
-  <!-- CONTACT -->
   <div class="content">
     <section id="contact" class="section reveal">
       <div class="section-header">
@@ -929,7 +895,7 @@ footer {
             <svg class="discord-icon" viewBox="0 0 24 24" fill="currentColor" style="color:#aaa">
               <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028c.462-.63.874-1.295 1.226-1.994a.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
             </svg>
-            <span class="discord-username">@alex2136</span>
+            <span class="discord-username">@exodusf8</span>
             <span class="copy-label">click to copy</span>
           </div>
           <div class="status-row">
@@ -943,7 +909,6 @@ footer {
 
 </main>
 
-<!-- LIGHTBOX -->
 <div id="lightbox">
   <div class="lb-backdrop" onclick="closeLightbox()"></div>
   <div class="lb-modal">
@@ -958,7 +923,7 @@ footer {
 </div>
 
 <footer>
-  <span class="footer-text">alex2136 · luau developer</span>
+  <span class="footer-text">ExodusF8 · luau developer</span>
   <span class="footer-text">© 2026</span>
 </footer>
 
@@ -971,8 +936,7 @@ function scrollTo(id) {
 function openLightbox(videoId, title) {
   document.getElementById('lb-title').textContent = title;
   document.getElementById('lb-frame').src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
-  const lb = document.getElementById('lightbox');
-  lb.classList.add('open');
+  document.getElementById('lightbox').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
 
@@ -987,13 +951,12 @@ document.addEventListener('keydown', e => {
 });
 
 function copyDiscord() {
-  navigator.clipboard.writeText('@alex2136');
+  navigator.clipboard.writeText('@exodusf8');
   const t = document.getElementById('toast');
   t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-// scroll reveal
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
@@ -1005,7 +968,6 @@ const observer = new IntersectionObserver(entries => {
 
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-// nav active state
 const sections = ['skills','code','projects','rates','contact'];
 const navBtns = document.querySelectorAll('.nav-section-btn');
 

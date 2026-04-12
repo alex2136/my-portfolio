@@ -102,11 +102,88 @@ section { position: relative; }
 
 #hero {
   min-height: 100vh;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   align-items: center;
   padding: 0 48px;
   position: relative;
   overflow: hidden;
+}
+
+.hero-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-visual {
+  width: 100%;
+  max-width: 400px;
+  aspect-ratio: 1;
+  position: relative;
+}
+
+.hero-visual-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.hero-visual-ring:nth-child(1) { inset: 0; }
+.hero-visual-ring:nth-child(2) { inset: 40px; border-color: rgba(0,0,0,0.08); }
+.hero-visual-ring:nth-child(3) { inset: 80px; border-color: rgba(0,0,0,0.1); }
+.hero-visual-ring:nth-child(4) { inset: 120px; border-color: rgba(0,0,0,0.05); }
+
+.hero-visual-center {
+  position: absolute;
+  inset: 140px;
+  border-radius: 50%;
+  background: var(--dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-visual-text {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: -0.03em;
+}
+
+.hero-visual-tag {
+  position: absolute;
+  background: var(--surface);
+  border: 1px solid rgba(0,0,0,0.08);
+  padding: 10px 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.04);
+}
+
+.hero-visual-tag-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+
+.hero-visual-tag-val {
+  font-family: 'Syne', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--dark);
+}
+
+.hvt-1 { top: 15%; right: -10px; animation: floatTag 4s ease-in-out infinite; }
+.hvt-2 { bottom: 25%; left: -20px; animation: floatTag 4s 1s ease-in-out infinite; }
+.hvt-3 { bottom: 8%; right: 20%; animation: floatTag 4s 2s ease-in-out infinite; }
+
+@keyframes floatTag {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
 }
 
 .hero-bg-text {

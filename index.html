@@ -112,16 +112,19 @@ section { position: relative; }
 .hero-bg-text {
   position: absolute;
   top: 50%;
-  right: -40px;
+  right: 0;
   transform: translateY(-50%);
   font-family: 'Syne', sans-serif;
-  font-size: clamp(10rem, 22vw, 20rem);
+  font-size: clamp(8rem, 18vw, 16rem);
   font-weight: 800;
   color: transparent;
   -webkit-text-stroke: 1px rgba(0,0,0,0.04);
   pointer-events: none;
   line-height: 0.85;
   user-select: none;
+  overflow: hidden;
+  max-width: 50%;
+  text-align: right;
 }
 
 .hero-content {
